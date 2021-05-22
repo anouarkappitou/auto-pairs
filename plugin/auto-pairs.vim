@@ -79,6 +79,10 @@ if !exists('g:AutoPairsShortcutJump')
   let g:AutoPairsShortcutJump = '<M-n>'
 endif
 
+if !exists('g:AutoPairsMovePrefix')
+  let g:AutoPairsMovePrefix = 'M'
+endif
+
 " Fly mode will for closed pair to jump to closed pair instead of insert.
 " also support AutoPairsBackInsert to insert pairs where jumped.
 if !exists('g:AutoPairsFlyMode')
@@ -536,7 +540,7 @@ func! AutoPairsInit()
 
   for key in split(b:AutoPairsMoveCharacter, '\s*')
     let escaped_key = substitute(key, "'", "''", 'g')
-    execute 'inoremap <silent> <buffer> <'.g:AutoPairsMovePrefix.'-'.key."> <C-R>=AutoPairsMoveCharacter('".escaped_key."')<CR>"
+    execute 'inoremap <silent> <buffer> '.g:AutoPairsMovePrefix.'-'.key." <C-R>=AutoPairsMoveCharacter('".escaped_key."')<CR>"
   endfor
 
   " Still use <buffer> level mapping for <BS> <SPACE>
