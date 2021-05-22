@@ -540,7 +540,7 @@ func! AutoPairsInit()
 
   for key in split(b:AutoPairsMoveCharacter, '\s*')
     let escaped_key = substitute(key, "'", "''", 'g')
-    execute 'inoremap <silent> <buffer> '.g:AutoPairsMovePrefix.'-'.key." <C-R>=AutoPairsMoveCharacter('".escaped_key."')<CR>"
+    execute 'inoremap <silent> <buffer> '.g:AutoPairsMovePrefix.key." <C-R>=AutoPairsMoveCharacter('".escaped_key."')<CR>"
   endfor
 
   " Still use <buffer> level mapping for <BS> <SPACE>
